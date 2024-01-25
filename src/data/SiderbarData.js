@@ -3,7 +3,7 @@ import
   BsListCheck, BsMenuButtonWideFill, BsFillGearFill}
  from 'react-icons/bs'
 
-export const SidebarData = [
+export const sidebarData = [
   {
     icon: BsGrid1X2Fill,
     heading: "Dashboard",
