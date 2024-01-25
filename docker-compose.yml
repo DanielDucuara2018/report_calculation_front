@@ -1,0 +1,28 @@
+version: "3.7"
+
+services:
+  app:
+    build:
+      context: ./
+      dockerfile: ./Dockerfile.prod
+    networks:
+      - report_calculation_report_bridge
+    ports:
+      - 3200:80  
+    volumes:
+      - ./:/app/
+  
+  app_dev:
+    build:
+      context: ./
+      dockerfile: ./Dockerfile.dev
+    networks:
+      - report_calculation_report_bridge
+    ports:
+      - 3200:3200  
+    volumes:
+      - ./:/app/
+
+networks:
+  report_calculation_report_bridge:
+    external: true
