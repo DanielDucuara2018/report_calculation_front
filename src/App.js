@@ -1,9 +1,9 @@
 import React from "react";
 import "./App.css"
 // import axios from "axios";
-import Header from "./Header"
-import Home from "./Home"
-import Sidebar from "./Sidebar"
+import Header from "./components/Header"
+import Home from "./components/Home"
+import Sidebar from "./components/sidebar/Sidebar"
 
 class App extends React.Component {
 
@@ -21,10 +21,12 @@ class App extends React.Component {
   render() {
     const toggleSidebar = this.state.toggleSidebar;
     return (
-      <div className="grid-container">
-        <Header handleSidebarToggle={this.handleToggleSidebar}/>
-        <Sidebar toggleSidebar={toggleSidebar} handleSidebarToggle={this.handleToggleSidebar}/>
-        <Home/>
+      <div className="main-container">
+        <div className="grid-container">
+          <Sidebar toggleSidebar={toggleSidebar} handleSidebarToggle={this.handleToggleSidebar}/>
+          {/* <Header handleSidebarToggle={this.handleToggleSidebar}/>
+          <Home/> */}
+        </div>
       </div>
     );
   }
