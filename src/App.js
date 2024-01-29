@@ -3,6 +3,7 @@ import "./App.css"
 // import axios from "axios";
 import Main from "./components/main/Main"
 import Sidebar from "./components/sidebar/Sidebar"
+import Rightside from "./components/rightside/Rightside";
 
 class App extends React.Component {
 
@@ -12,6 +13,7 @@ class App extends React.Component {
         <div className="grid-container">
           <Sidebar/>
           <Main/>
+          <Rightside/>
         </div>
       </div>
     );

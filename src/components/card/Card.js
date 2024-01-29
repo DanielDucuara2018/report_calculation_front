@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from 'react';
 import Chart from "react-apexcharts";
 import { MdOutlineClose } from "react-icons/md";
 import { motion, LayoutGroup } from "framer-motion"
@@ -8,7 +8,7 @@ import 'react-circular-progressbar/dist/styles.css';
 import "./Card.css"
 
 
-class Card extends React.Component {
+class Card extends Component {
   constructor(props) {
     super(props);
     this.state = {"expanded": false}
@@ -28,7 +28,7 @@ class Card extends React.Component {
   }
 }
 
-class ExpandedCard extends React.Component {
+class ExpandedCard extends Component {
   constructor(props) {
     super(props);
     this.outOfExpanded = this.outOfExpanded.bind(this)
@@ -58,7 +58,7 @@ class ExpandedCard extends React.Component {
   }
 }
 
-class CompactedCard extends React.Component {
+class CompactedCard extends Component {
   constructor(props) {
     super(props);
     this.intoExpanded = this.intoExpanded.bind(this)
@@ -72,7 +72,7 @@ class CompactedCard extends React.Component {
   render() {
     const cardData = this.props.params
     return (
-      <motion.div className="card-compacted" style={{
+      <motion.div className="compacted-card" style={{
         background: cardData.color.backGround,
         boxShadow: cardData.color.boxShadow
       }}

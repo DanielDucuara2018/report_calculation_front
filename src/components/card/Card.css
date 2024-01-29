@@ -1,4 +1,4 @@
-.card-compacted {
+.compacted-card {
   display: flex;
   flex: 1;
   height: 7rem !important;
@@ -8,7 +8,7 @@
   position: relative;
   cursor: pointer;
 }
-.card-compacted :hover {
+.compacted-card :hover {
   box-shadow: none !important;
 }
 
@@ -60,7 +60,7 @@
 /* ExpandedCard */
 .expanded-card {
   position: absolute;
-  width: 60%;
+  width: 69%;
   height: 70vh;
   z-index: 9;
   left: 13rem;
@@ -92,6 +92,11 @@
     height: 45vh;
     left: 6rem;
   }
+
+  .compacted-card {
+    align-items: center;
+    width: 19%;
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -99,6 +104,12 @@
     top: 8rem;
     height: 50%;
     left: 25px;
-    width: 80%;
+    width: 85%;
+  }
+
+  .compacted-card {
+    align-items: center;
+    width: 18%;
+    display: flex;
   }
 }

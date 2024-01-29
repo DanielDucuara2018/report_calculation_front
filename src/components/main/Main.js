@@ -1,13 +1,14 @@
-import React from "react";
-import "./Main.css"
+import React, { Component } from 'react';
 import Card from "../card/Card";
 import { cardsData } from "../../data/CardsData";
+import DefaultTable from '../table/Table';
+import "./Main.css"
 
-class Main extends React.Component {
+class Main extends Component {
   render() {
     return (
       <div className="main-container">
-        <div className="main-title "> DashBoard </div>
+        <div className="main-title"> DashBoard </div>
         <div className="cards-container">
           {cardsData.map((item, index) => {
             return(
@@ -23,6 +24,10 @@ class Main extends React.Component {
               </div>
             )
           })}
+        </div>
+        <div className="table-container">
+          <div className="main-subtitle"> Recent Orders </div>
+          <DefaultTable/>
         </div>
       </div>
     );

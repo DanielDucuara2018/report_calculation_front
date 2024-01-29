@@ -1,0 +1,17 @@
+.update-item{
+    display: flex;
+    gap: 0.5rem;
+}
+
+.update-item>img{
+    width: 3.2rem;
+    height: 3.2rem;
+}
+
+.update-details>div{
+    margin-bottom: 0.5rem;
+}
+
+.update-details>div>span:nth-of-type(1){
+    font-weight: bold;
+}
