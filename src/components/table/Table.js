@@ -6,7 +6,8 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { rows } from "../../data/TableData";
+import Moment from 'moment';
+import Api from "../../Api";
 import "./Table.css"
 
 
@@ -14,64 +15,51 @@ class DefaultTable extends Component {
 
   constructor(props) {
     super(props);
-    this.setStatusStyle = this.setStatusStyle.bind(this)
+    this.state = {currencies: []}
   }
 
-  setStatusStyle(status){
-    if(status === 'Approved')
-    {
-      return {
-        background: 'rgb(145 254 159 / 47%)',
-        color: 'green',
-      }
-    }
-    else if(status === 'Pending')
-    {
-      return{
-        background: '#ffadad8f',
-        color: 'red',
-      }
-    }
-    else{
-      return{
-        background: '#59bfff',
-        color: 'white',
-      }
-    }
+  componentDidMount() {
+    Api.get("currencies/?user_id=user_1ff801bf1d12d35c549771a549f356bfa71")
+    .then(res => {
+      const currencies = res.data;
+      this.setState({ currencies });
+    })
   }
 
   render() {
+    const dateTimeFormat = "MMMM Do YYYY, h:mm:ss a"
+    const currencies = this.state.currencies
+
     return (
       <div className="Table">
         <TableContainer
           component={Paper}
           style={{ boxShadow: "0px 13px 20px 0px #80808029" }}
+          sx={{ maxHeight: 550 }}
         >
           <Table sx={{ minWidth: 650 }} aria-label="simple table">
             <TableHead>
               <TableRow>
-                <TableCell>Product</TableCell>
-                <TableCell align="left">Tracking ID</TableCell>
-                <TableCell align="left">Date</TableCell>
-                <TableCell align="left">Status</TableCell>
-                <TableCell align="left"></TableCell>
+                <TableCell>Symbol</TableCell>
+                <TableCell align="left">Quantity</TableCell>
+                <TableCell align="left">Description</TableCell>
+                <TableCell align="left">Creation Date</TableCell>
+                <TableCell align="left">Update Date</TableCell>
               </TableRow>
             </TableHead>
             <TableBody style={{ color: "white" }}>
-              {rows.map((row) => (
+              {currencies.map((currency) => (
                 <TableRow
-                  key={row.name}
+                  key={currency.symbol}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
                   <TableCell component="th" scope="row">
-                    {row.name}
+                    {currency.symbol}
                   </TableCell>
-                  <TableCell align="left">{row.trackingId}</TableCell>
-                  <TableCell align="left">{row.date}</TableCell>
-                  <TableCell align="left">
-                    <span className="status" style={this.setStatusStyle(row.status)}>{row.status}</span>
-                  </TableCell>
-                  <TableCell align="left" className="column-details">Details</TableCell>
+                  <TableCell align="left">{currency.quantity}</TableCell>
+                  <TableCell align="left">{currency.description}</TableCell>
+                  <TableCell align="left">{Moment(currency.creation_date).format(dateTimeFormat)}</TableCell>
+                  <TableCell align="left">{currency.update_date? Moment(currency.update_date).format(dateTimeFormat):currency.update_date}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
