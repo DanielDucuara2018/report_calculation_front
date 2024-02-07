@@ -1,10 +1,11 @@
 import React, { Component } from "react";
-import Card from "../card/Card";
-import DefaultTable from "../table/Table";
+import Card from "./card/Card";
+import Portafolio from "./portafolio/Portafolio";
 import { cardsData } from "../../data/CardsData";
-import "./Main.css"
+import Rightside from "./rightside/Rightside";
+import "./Dashboard.css"
 
-class Main extends Component {
+class Dashboard extends Component {
   render() {
     return (
       <>
@@ -28,12 +29,13 @@ class Main extends Component {
           </div>
           <div className="table-container">
             <div className="main-subtitle"> Portafolio </div>
-            <DefaultTable/>
+            <Portafolio/>
           </div>
         </div>
+        <Rightside/>
       </>
     );
   }
 }
 
-export default Main;
+export default Dashboard;

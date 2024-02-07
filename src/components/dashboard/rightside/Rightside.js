@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import Chart from "react-apexcharts";
-import Update from "../update/Update";
-import { UpdatesData } from "../../data/UpdatesData";
-import { reviewsData } from "../../data/ReviewData";
+import Update from "./update/Update";
+import { UpdatesData } from "../../../data/UpdatesData";
+import { reviewsData } from "../../../data/ReviewData";
 import "./Rightside.css"
 
 class Rightside extends Component {

@@ -1,7 +1,7 @@
 import React from "react";
-import Main from "./components/main/Main"
+import Dashboard from "./components/dashboard/Dashboard"
 import Sidebar from "./components/sidebar/Sidebar"
-import Rightside from "./components/rightside/Rightside";
+import Purchase from "./components/purchase/Purchase";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css"
 
@@ -12,8 +12,7 @@ const router = createBrowserRouter([
     <div className="app-container">
       <div className="grid-container">
         <Sidebar/>
-        <Main/>
-        <Rightside/>
+        <Dashboard/>
       </div>
     </div>,
   },
@@ -23,7 +22,7 @@ const router = createBrowserRouter([
     <div className="app-container">
       <div className="grid-container">
         <Sidebar/>
-        <div>Purchases</div>
+        <Purchase/>
       </div>
     </div>,
   },

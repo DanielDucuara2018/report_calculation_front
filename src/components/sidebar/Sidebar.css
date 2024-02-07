@@ -80,7 +80,7 @@
   margin-right: calc(1rem - 8px);
 }
 
-.menu-item > a:-webkit-any-link {
+a:-webkit-any-link {
   color: var(--black);
   text-decoration: none;
 }

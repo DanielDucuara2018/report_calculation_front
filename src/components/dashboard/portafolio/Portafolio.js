@@ -7,11 +7,11 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Moment from 'moment';
-import Api from "../../Api";
-import "./Table.css"
+import Api from "../../../Api";
+import "./Portafolio.css"
 
 
-class DefaultTable extends Component {
+class Portafolio extends Component {
 
   constructor(props) {
     super(props);
@@ -70,4 +70,4 @@ class DefaultTable extends Component {
   }
 }
 
-export default DefaultTable;
+export default Portafolio;

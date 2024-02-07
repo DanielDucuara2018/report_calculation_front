@@ -48,9 +48,12 @@ class Sidebar extends Component {
           <div className="menu">
             {sidebarData.map((item, index) => {
               return(
-                <div className={selectedMenuItem===index ?  "menu-item active": "menu-item"} key={index} onClick={() => this.selectMenuItem(index)}>
-                  <NavLink to={item.route}><item.icon className="icon"/> <span>{item.heading}</span> </NavLink>
-                </div>
+                <NavLink 
+                className={selectedMenuItem===index ?  "menu-item active": "menu-item"} 
+                key={index} onClick={() => this.selectMenuItem(index)} 
+                to={item.route}>
+                  <item.icon className="icon"/> <span>{item.heading}</span> 
+                </NavLink>
               )
             })}
 

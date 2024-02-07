@@ -3,7 +3,7 @@ import Chart from "react-apexcharts";
 import { MdOutlineClose } from "react-icons/md";
 import { motion, LayoutGroup } from "framer-motion"
 import { CircularProgressbar } from "react-circular-progressbar";
-import { chartData } from "../../data/ChartData";
+import { chartData } from "../../../data/ChartData";
 import "react-circular-progressbar/dist/styles.css";
 import "./Card.css"
 
