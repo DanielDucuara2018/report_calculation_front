@@ -16,7 +16,6 @@ class Card extends Component {
   }
 
   setExpanded(){
-    console.log(this.state.expanded)
     this.setState({"expanded": !this.state.expanded})
   }
 

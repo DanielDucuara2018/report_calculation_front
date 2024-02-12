@@ -15,29 +15,29 @@ export const sidebarData = [
     heading: "Purchases",
     route: "/purchases"
   },
-  {
-    icon: BsFillGrid3X3GapFill,
-    heading: "Categories",
-    route: "/categories"
-  },
-  {
-    icon: BsPeopleFill,
-    heading: "Customers",
-    route: "/customers"
-  },
-  {
-    icon: BsListCheck,
-    heading: "Inventory",
-    route: "/inventory"
-  },
-  {
-    icon: BsMenuButtonWideFill,
-    heading: "Reports",
-    route: "/reports"
-  },
-  {
-    icon: BsFillGearFill,
-    heading: "Settings",
-    route: "/settings"
-  },
+  // {
+  //   icon: BsFillGrid3X3GapFill,
+  //   heading: "Categories",
+  //   route: "/categories"
+  // },
+  // {
+  //   icon: BsPeopleFill,
+  //   heading: "Customers",
+  //   route: "/customers"
+  // },
+  // {
+  //   icon: BsListCheck,
+  //   heading: "Inventory",
+  //   route: "/inventory"
+  // },
+  // {
+  //   icon: BsMenuButtonWideFill,
+  //   heading: "Reports",
+  //   route: "/reports"
+  // },
+  // {
+  //   icon: BsFillGearFill,
+  //   heading: "Settings",
+  //   route: "/settings"
+  // },
 ];

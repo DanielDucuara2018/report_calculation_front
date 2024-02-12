@@ -56,10 +56,6 @@ class Sidebar extends Component {
                 </NavLink>
               )
             })}
-
-            <div className="menu-item">
-              <LiaSignOutAltSolid className="icon"/> 
-            </div>
           </div>
         </motion.div>
       </>

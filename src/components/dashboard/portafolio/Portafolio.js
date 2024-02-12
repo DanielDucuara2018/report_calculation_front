@@ -56,7 +56,7 @@ class Portafolio extends Component {
                   <TableCell component="th" scope="row">
                     {currency.symbol}
                   </TableCell>
-                  <TableCell align="left">{currency.quantity}</TableCell>
+                  <TableCell align="left">{currency.quantity.toFixed(4)}</TableCell>
                   <TableCell align="left">{currency.description}</TableCell>
                   <TableCell align="left">{Moment(currency.creation_date).format(dateTimeFormat)}</TableCell>
                   <TableCell align="left">{currency.update_date? Moment(currency.update_date).format(dateTimeFormat):currency.update_date}</TableCell>
