@@ -1,0 +1,32 @@
+.charts-container{
+  display: flex;
+  gap: 10px;
+}
+
+.chart-item {
+  margin: 0 auto;
+}
+
+
+@media screen and (max-width: 1355px) {
+  .charts-container {
+    flex-direction: column;
+  }
+  .chart-item{
+    height: 350px;
+  }
+  .table-container{
+    padding: 1rem;
+  }
+}
+
+@media screen and (max-width: 889px)
+{
+  .charts-container {
+    width: 90%;
+  }
+  .table-container{
+    padding: 1rem;
+  }
+}
+  

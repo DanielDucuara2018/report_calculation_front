@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import Chart from "react-apexcharts";
 import { MdOutlineClose } from "react-icons/md";
 import { motion, LayoutGroup } from "framer-motion"
-import { CircularProgressbar } from "react-circular-progressbar";
 import { chartData } from "../../../data/ChartData";
 import "react-circular-progressbar/dist/styles.css";
 import "./Card.css"
@@ -67,7 +66,6 @@ class CompactedCard extends Component {
     this.props.setExpanded()
   }
 
-
   render() {
     const cardData = this.props.params
     return (
@@ -79,10 +77,6 @@ class CompactedCard extends Component {
       layoutId="compactedCard"
       >
         <div className="card-radial-bar">
-          <CircularProgressbar
-          value={cardData.barValue}
-          text={`${cardData.barValue}`}
-          />
           <span>{cardData.title}</span>
         </div>
         <div className="card-details">

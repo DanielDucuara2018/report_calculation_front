@@ -4,51 +4,95 @@ import ReactApexChart from "react-apexcharts";
 class LineChart extends Component {
   constructor(props) {
     super(props);
+  }
+  componentDidMount() {
+    console.log("Mount")
+  }
 
-    this.state = {
-    
-      series: [{
-          name: "Desktops",
-          data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
-      }],
-      options: {
-        chart: {
-          height: 350,
-          type: 'line',
-          zoom: {
-            enabled: false
-          }
-        },
-        dataLabels: {
-          enabled: false
-        },
-        stroke: {
-          curve: 'straight'
-        },
-        title: {
-          text: 'Product Trends by Month',
-          align: 'left'
-        },
-        grid: {
-          row: {
-            colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
-            opacity: 0.5
-          },
-        },
-        xaxis: {
-          categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
-        }
-      },
-    
-    
-    };
+  get_data_chart(purchases){
+    purchases.sort((a, b) => a.date - b.date);
+    return purchases.reduce((purchases, {quantity, price, date}) => {
+      if (!purchases["quantities"] & !purchases["dates"]){
+        purchases["quantities"] = []
+        purchases["dates"] = []
+      }
+      purchases["quantities"].push((quantity*price).toFixed(2));
+      purchases["dates"].push(date);
+      return purchases;
+    }, {});    
   }
 
   render() {
+    const data = this.get_data_chart(this.props.purchases)
+    console.log(data)
+
+    const series = [{
+      name: "Purchase",
+      data: data["quantities"],
+      type: "line",
+    }]
+
+    const options = {
+      chart: {
+        type: 'area',
+        stacked: false,
+        zoom: {
+          type: 'x',
+          enabled: true,
+          autoScaleYaxis: true
+        },
+        toolbar: {
+          autoSelected: 'zoom'
+        }
+      },
+      dataLabels: {
+        enabled: false
+      },
+      markers: {
+        size: 5,
+        shape: "circle",
+        radius: 2,
+      },
+      title: {
+        text: 'Purchase history',
+        align: 'left'
+      },
+      fill: {
+        type: 'gradient',
+        gradient: {
+          shadeIntensity: 1,
+          inverseColors: false,
+          opacityFrom: 0.5,
+          opacityTo: 0,
+          stops: [0, 90, 100]
+        },
+      },
+      yaxis: {
+        title: {
+          text: 'Price'
+        },
+      },
+      xaxis: {
+        categories: data["dates"],
+        type: 'datetime',
+      },
+      tooltip: {
+        x: {
+          format: 'dd/MM/yy HH:mm'
+        },
+      },
+    }
+
     return (
       <div>
         <div id="chart">
-          <ReactApexChart options={this.state.options} series={this.state.series} type="line" width="450" />
+          <ReactApexChart 
+            options={options} 
+            series={series} 
+            type="area" 
+            width={450}
+            height={300}
+          />
         </div>
         <div id="html-dist"></div>
       </div>

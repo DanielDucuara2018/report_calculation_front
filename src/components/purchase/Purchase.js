@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import DefaultTable from './table/Table';
-import "./Purchase.css"
 import Api from '../../Api';
 import BarChart from './barchart/BarChart';
 import LineChart from './linechart/LineChart';
+import { FiRefreshCw } from "react-icons/fi";
+import "./Purchase.css"
 
 class Purchase extends Component {
   constructor(props) {
     super(props);
     this.state = {purchases: []}
+    this.refreshPage = this.refreshPage.bind(this)
   }
 
   componentDidMount() {
@@ -19,20 +21,23 @@ class Purchase extends Component {
     })
   }
 
+  refreshPage() {
+    this.componentDidMount();
+  }
 
   render() {
     return (
       <div className="main-container">
-        <div className="cards-container">
-          <div className="card-item">
+        <div className="main-title"> Purchases <span><FiRefreshCw onClick={this.refreshPage}/></span></div>
+        <div className="charts-container">
+          <div className="chart-item">
             <BarChart purchases={this.state.purchases}/>
           </div>
-          <div className="card-item">
+          <div className="chart-item">
             <LineChart purchases={this.state.purchases}/>
           </div>
         </div>
         <div className="table-container">
-          <div className="main-subtitle"> Purchases </div>
           <DefaultTable purchases={this.state.purchases}/>
         </div>
       </div>

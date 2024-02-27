@@ -23,7 +23,7 @@
     color: #00b5ff !important;
   }
   
-  @media screen and (max-width: 1200px) {
+  @media screen and (max-width: 1355px) {
     .Table {
       width: 170%;
       margin-top: 2rem;
@@ -31,7 +31,7 @@
   }
   
   
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 889px) {
     .Table{
       position: relative;
       display: flex;

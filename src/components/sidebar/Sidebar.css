@@ -86,7 +86,7 @@ a:-webkit-any-link {
 }
 
 /* Tablets */
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1355px) {
   .menu-item>span{
     display: none;
   }
@@ -95,7 +95,7 @@ a:-webkit-any-link {
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 889px) {
   .sidebar{
     position: fixed;
     z-index: 9;
@@ -111,10 +111,6 @@ a:-webkit-any-link {
   .logo{
     display: flex;
   }
-  .menu .menu-item:last-child {
-    position: relative;
-    margin-top: 6rem;
-  }
   .bars{
     display: flex;
     position: fixed;
@@ -125,7 +121,4 @@ a:-webkit-any-link {
     border-radius: 10px;
     z-index: 9;
   }
-  /* .close{
-    left: -60%;
-  } */
 }

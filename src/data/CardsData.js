@@ -1,6 +1,7 @@
-import { BiMoneyWithdraw } from "react-icons/bi";
-import { RiMoneyDollarCircleLine } from "react-icons/ri";
-import { TiClipboard } from "react-icons/ti";
+import { PiCurrencyBtcFill } from "react-icons/pi";
+import { ImCoinEuro } from "react-icons/im";
+import { GiProfit } from "react-icons/gi";
+import { RiPlantLine } from "react-icons/ri";
 
 export const cardsData = [
   {
@@ -10,7 +11,7 @@ export const cardsData = [
       boxShadow: "0px 10px 20px 0px #e0c6f5",
     },
     barValue: 70,
-    icon: RiMoneyDollarCircleLine,
+    icon: ImCoinEuro,
     series: [
       {
         name: "Sales",
@@ -25,7 +26,7 @@ export const cardsData = [
       boxShadow: "0px 10px 20px 0px #FDC0C7",
     },
     barValue: 80,
-    icon: BiMoneyWithdraw,
+    icon: PiCurrencyBtcFill,
     series: [
       {
         name: "Revenue",
@@ -40,7 +41,7 @@ export const cardsData = [
       boxShadow: "0px 10px 20px 0px #F9D59B",
     },
     barValue: 60,
-    icon: TiClipboard,
+    icon: GiProfit,
     series: [
       {
         name: "Expenses",
@@ -55,7 +56,7 @@ export const cardsData = [
       boxShadow: "0px 10px 20px 0px #F9D59B",
     },
     barValue: 60,
-    icon: TiClipboard,
+    icon: RiPlantLine,
     series: [
       {
         name: "Expenses",

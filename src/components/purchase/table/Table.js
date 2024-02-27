@@ -13,12 +13,13 @@ class DefaultTable extends Component {
   render() {
     const dateTimeFormat = "MMMM Do YYYY, h:mm:ss a"
     const purchases = this.props.purchases
+    // console.log(purchases)
     return (
       <div className="Table">
         <TableContainer
           component={Paper}
           style={{ boxShadow: "0px 13px 20px 0px #80808029" }}
-          sx={{ maxHeight: 550 }}
+          sx={{ maxHeight: 425 }}
         >
           <Table sx={{ minWidth: 650 }} aria-label="simple table">
             <TableHead>

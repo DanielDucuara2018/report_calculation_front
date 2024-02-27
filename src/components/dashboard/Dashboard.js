@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Card from "./card/Card";
+import { FiRefreshCw } from "react-icons/fi";
 import Portafolio from "./portafolio/Portafolio";
 import Rightside from "./rightside/Rightside";
 import { cardsData } from "../../data/CardsData";
@@ -17,7 +18,8 @@ const endpoints = [
 class Dashboard extends Component {
   constructor(props) {
     super(props);
-    this.state = {total: Array(4).fill(0)}
+    this.state = {total: Array(4).fill(0), currencies: []}
+    this.refreshPage = this.refreshPage.bind(this)
   }
 
   componentDidMount() {
@@ -26,16 +28,24 @@ class Dashboard extends Component {
         this.setState({ total: [total_euros, total_crypto_euros, profit_euros, invested_euros] })
       })
     );
+
+    Api.get("currencies/?user_id=user_1ff801bf1d12d35c549771a549f356bfa71")
+    .then(res => {
+      const currencies = res.data;
+      this.setState({ currencies });
+    })
   }
 
+  refreshPage() {
+    this.componentDidMount();
+  }
 
   render() {
     const total = this.state.total
-    console.log(this.state)
     return (
       <>
         <div className="main-container">
-          <div className="main-title"> DashBoard </div>
+          <div className="main-title"> DashBoard <span><FiRefreshCw onClick={this.refreshPage}/></span></div>
           <div className="cards-container">
             {cardsData.map((item, index) => {
               return (
@@ -44,7 +54,7 @@ class Dashboard extends Component {
                     title={item.title}
                     color={item.color}
                     barValue={item.barValue}
-                    value={`${total[index].toLocaleString()} €`}
+                    value={`€ ${total[index].toLocaleString()}`}
                     icon={item.icon}
                     series={item.series}
                   />
@@ -54,10 +64,10 @@ class Dashboard extends Component {
           </div>
           <div className="table-container">
             <div className="main-subtitle"> Portafolio </div>
-            <Portafolio />
+            <Portafolio currencies={this.state.currencies}/>
           </div>
         </div>
-        <Rightside />
+        <Rightside currencies={this.state.currencies}/>
       </>
     );
   }

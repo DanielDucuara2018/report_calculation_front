@@ -12,30 +12,16 @@ import "./Portafolio.css"
 
 
 class Portafolio extends Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {currencies: []}
-  }
-
-  componentDidMount() {
-    Api.get("currencies/?user_id=user_1ff801bf1d12d35c549771a549f356bfa71")
-    .then(res => {
-      const currencies = res.data;
-      this.setState({ currencies });
-    })
-  }
-
   render() {
     const dateTimeFormat = "MMMM Do YYYY, h:mm:ss a"
-    const currencies = this.state.currencies
+    const currencies = this.props.currencies
 
     return (
       <div className="Table">
         <TableContainer
           component={Paper}
           style={{ boxShadow: "0px 13px 20px 0px #80808029" }}
-          sx={{ maxHeight: 550 }}
+          sx={{ maxHeight: 450 }}
         >
           <Table sx={{ minWidth: 650 }} aria-label="simple table">
             <TableHead>

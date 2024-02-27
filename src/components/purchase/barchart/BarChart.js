@@ -20,8 +20,7 @@ class BarChart extends Component {
   }
 
   render() {
-    const purchases = this.props.purchases
-    const data = this.get_data_chart(purchases)
+    const data = this.get_data_chart(this.props.purchases)
 
     const series = [{
       name: "Gain (%)",
@@ -30,7 +29,11 @@ class BarChart extends Component {
 
     const options = {
       chart: {
-        type: "bar"
+        type: "bar",
+      },
+      title: {
+        text: 'Gain per comodity',
+        align: 'left'
       },
       xaxis: {
         categories: Object.keys(data),
@@ -47,7 +50,8 @@ class BarChart extends Component {
           options={options}
           series={series}
           type="bar"
-          width="500"
+          width={450}
+          height={350}
         />
       </div>
     );
