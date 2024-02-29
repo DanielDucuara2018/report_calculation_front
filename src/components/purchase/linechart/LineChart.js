@@ -5,9 +5,6 @@ class LineChart extends Component {
   constructor(props) {
     super(props);
   }
-  componentDidMount() {
-    console.log("Mount")
-  }
 
   get_data_chart(purchases){
     purchases.sort((a, b) => a.date - b.date);
@@ -28,7 +25,7 @@ class LineChart extends Component {
 
     const series = [{
       name: "Purchase",
-      data: data["quantities"],
+      data: data["quantities"]? data["quantities"]:[],
       type: "line",
     }]
 
@@ -69,11 +66,11 @@ class LineChart extends Component {
       },
       yaxis: {
         title: {
-          text: 'Price'
+          text: 'Quantity (usd)'
         },
       },
       xaxis: {
-        categories: data["dates"],
+        categories: data["dates"]? data["dates"]:[],
         type: 'datetime',
       },
       tooltip: {
