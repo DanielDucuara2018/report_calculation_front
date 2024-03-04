@@ -32,7 +32,7 @@ class BarChart extends Component {
         type: "bar",
       },
       title: {
-        text: 'Gain per comodity',
+        text: 'Gain per cryptocurrency',
         align: 'left'
       },
       xaxis: {

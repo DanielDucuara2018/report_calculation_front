@@ -4,6 +4,8 @@ import Api from '../../Api';
 import BarChart from './barchart/BarChart';
 import LineChart from './linechart/LineChart';
 import { FiRefreshCw } from "react-icons/fi";
+import Rightside from './rightside/Rightside';
+import Moment from "moment";
 import "./Purchase.css"
 
 class Purchase extends Component {
@@ -26,21 +28,25 @@ class Purchase extends Component {
   }
 
   render() {
+    const purchases = this.state.purchases.sort((a, b) => Moment(a.date.replace("\[UTC\]","")) - Moment(b.date.replace("\[UTC\]",""))).reverse()
     return (
-      <div className="main-container">
-        <div className="main-title"> Purchases <span><FiRefreshCw onClick={this.refreshPage}/></span></div>
-        <div className="charts-container">
-          <div className="chart-item">
-            <BarChart purchases={this.state.purchases}/>
+      <>
+        <div className="main-container">
+          <div className="main-title"> Purchases <span><FiRefreshCw onClick={this.refreshPage}/></span></div>
+          <div className="charts-container">
+            <div className="chart-item">
+              <BarChart purchases={purchases}/>
+            </div>
+            <div className="chart-item">
+              <LineChart purchases={purchases}/>
+            </div>
           </div>
-          <div className="chart-item">
-            <LineChart purchases={this.state.purchases}/>
+          <div className="table-container">
+            <DefaultTable purchases={purchases}/>
           </div>
         </div>
-        <div className="table-container">
-          <DefaultTable purchases={this.state.purchases}/>
-        </div>
-      </div>
+        <Rightside purchases={purchases}></Rightside>
+      </>
     );
   }
 }

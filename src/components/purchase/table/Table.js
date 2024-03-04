@@ -12,8 +12,7 @@ import "./Table.css"
 class DefaultTable extends Component {
   render() {
     const dateTimeFormat = "MMMM Do YYYY, h:mm:ss a"
-    const purchases = this.props.purchases
-    // console.log(purchases)
+    const purchases = this.props.purchases;
     return (
       <div className="Table">
         <TableContainer

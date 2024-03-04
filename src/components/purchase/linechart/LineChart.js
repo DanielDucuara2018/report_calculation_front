@@ -7,7 +7,6 @@ class LineChart extends Component {
   }
 
   get_data_chart(purchases){
-    purchases.sort((a, b) => a.date - b.date);
     return purchases.reduce((purchases, {quantity, price, date}) => {
       if (!purchases["quantities"] & !purchases["dates"]){
         purchases["quantities"] = []
