@@ -10,7 +10,6 @@ export const cardsData = [
       backGround: "linear-gradient(180deg, #bb67ff 0%, #c484f3 100%)",
       boxShadow: "0px 10px 20px 0px #e0c6f5",
     },
-    barValue: 70,
     icon: ImCoinEuro,
     series: [
       {
@@ -25,7 +24,6 @@ export const cardsData = [
       backGround: "linear-gradient(180deg, #FF919D 0%, #FC929D 100%)",
       boxShadow: "0px 10px 20px 0px #FDC0C7",
     },
-    barValue: 80,
     icon: PiCurrencyBtcFill,
     series: [
       {
@@ -40,7 +38,6 @@ export const cardsData = [
       backGround:"linear-gradient(rgb(248, 212, 154) -146.42%, rgb(255 202 113) -46.42%)",
       boxShadow: "0px 10px 20px 0px #F9D59B",
     },
-    barValue: 60,
     icon: GiProfit,
     series: [
       {
@@ -55,7 +52,6 @@ export const cardsData = [
       backGround:"linear-gradient(rgb(118, 200, 142) -134.42%, rgb(121 190 101) -34.42%)",
       boxShadow: "0px 10px 20px 0px #F9D59B",
     },
-    barValue: 60,
     icon: RiPlantLine,
     series: [
       {

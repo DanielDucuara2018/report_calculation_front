@@ -7,7 +7,7 @@ import "./Rightside.css"
 class Rightside extends Component {
   render() {
     const dateTimeFormat = "MMMM Do YYYY, h:mm:ss a"
-    const currencies = this.props.currencies
+    const currencies = this.props.currencies.sort((a, b) => (a.price*a.quantity) - (b.price*b.quantity)).reverse()
     const options = {
       chart: {
         type: 'pie',
