@@ -2,8 +2,8 @@
 
 ## Dashboard Page
 
-![Texte alternatif](./resources/Dashboard.png "dashboard page").
+![Texte alternatif](./resources/Dashboard.png "dashboard page")
 
 ## Purchases Page
 
-![Texte alternatif](./resources/Purchases.png "Purchases page").
+![Texte alternatif](./resources/Purchases.png "Purchases page")
