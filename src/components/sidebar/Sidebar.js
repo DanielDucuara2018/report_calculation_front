@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { sidebarData } from "../../data/SiderbarData";
-import { BsCart3 } from "react-icons/bs"
+import { TbReportAnalytics } from "react-icons/tb";
 import { FaBars } from "react-icons/fa6";
-import { LiaSignOutAltSolid } from "react-icons/lia";
 import { motion } from "framer-motion";
 import { NavLink } from "react-router-dom";
 import "./Sidebar.css"
@@ -42,7 +41,7 @@ class Sidebar extends Component {
         animate={window.innerWidth<=768?`${expandedSideBar}`:""}
         >
           <div className="logo">
-              <BsCart3 className="icon-header"/> Shop
+              <TbReportAnalytics className="icon-header"/> R.C.
           </div>
 
           <div className="menu">
