@@ -33,7 +33,7 @@ const router = createBrowserRouter([
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {token: 12345}
+    this.state = {token: "", user: {}}
     this.setToken = this.setToken.bind(this)
   }
 
@@ -41,6 +41,13 @@ class App extends React.Component {
     this.setState({token})
   }
 
+  componentDidMount() {
+    const loggedInUserToken = localStorage.getItem("token");
+    if (loggedInUserToken) {
+      this.setToken(loggedInUserToken);
+    }
+  } // From a security point of view, storing the access token in a persistent location (like localStorage, window,..) is bad practice 
+  
   render() {
     return (
       <>

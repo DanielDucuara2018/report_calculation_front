@@ -23,13 +23,25 @@ class Dashboard extends Component {
   }
 
   componentDidMount() {
-    axios.all(endpoints.map((endpoint) => Api.get(`calculate/${endpoint}?user_id=user_1ff801bf1d12d35c549771a549f356bfa71`))).then(
+    const loggedInUserToken = localStorage.getItem("token");
+    axios.all(endpoints.map((endpoint) => Api.get(`calculate/${endpoint}`,
+      {
+        headers: {
+          "Authorization": "Bearer " + loggedInUserToken
+        }
+      }
+    ))).then(
       axios.spread(({ data: total_euros }, { data: total_crypto_euros }, { data: profit_euros }, { data: invested_euros }) => {
         this.setState({ total: [total_euros, total_crypto_euros, profit_euros, invested_euros] })
       })
     );
-
-    Api.get("currencies/?user_id=user_1ff801bf1d12d35c549771a549f356bfa71")
+    Api.get("currencies",
+      {
+        headers: {
+          "Authorization": "Bearer " + loggedInUserToken
+        }
+      }
+    )
     .then(res => {
       const currencies = res.data;
       this.setState({ currencies });

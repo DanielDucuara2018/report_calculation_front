@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 import ReactApexChart from "react-apexcharts";
 
 class LineChart extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   get_data_chart(purchases){
     return purchases.reduce((purchases, {quantity, price, date}) => {
       if (!purchases["quantities"] & !purchases["dates"]){
@@ -20,7 +16,6 @@ class LineChart extends Component {
 
   render() {
     const data = this.get_data_chart(this.props.purchases)
-    console.log(data)
 
     const series = [{
       name: "Purchase",

@@ -4,6 +4,7 @@ import { TbReportAnalytics } from "react-icons/tb";
 import { FaBars } from "react-icons/fa6";
 import { motion } from "framer-motion";
 import { NavLink } from "react-router-dom";
+import { TbLogout2 } from "react-icons/tb";
 import "./Sidebar.css"
 
 class Sidebar extends Component {
@@ -19,6 +20,16 @@ class Sidebar extends Component {
   setExpandedSideBar(){
     this.setState({expandedSideBar: !this.state.expandedSideBar});
   }
+
+  nextPath(path) {
+    this.props.history.push(path);
+  }
+
+  handleLogout(){
+    console.log("logout")
+    localStorage.clear();
+    window.location.reload(false);
+  };
 
   render() {
     const selectedMenuItem = this.state.selectedMenuItem
@@ -55,6 +66,10 @@ class Sidebar extends Component {
                 </NavLink>
               )
             })}
+
+            <div className="menu-item" onClick={this.handleLogout} >
+                <TbLogout2 className="icon"/> <span>Logout</span> 
+            </div>
           </div>
         </motion.div>
       </>

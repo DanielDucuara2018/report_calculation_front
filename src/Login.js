@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
+// import { withCookies, Cookies } from 'react-cookie'
 import PropTypes from 'prop-types';
 import Api from "./Api";
 import './Login.css';
-
-function loginUser(credentials) {
-  return {token: 12345}
-}
 
 class Login extends Component {
   constructor(props) {
@@ -16,16 +13,22 @@ class Login extends Component {
 
   handleSubmit(e){
     e.preventDefault();
-    const username = this.state.username
-    const password = this.state.password
-    console.log(username)
-    console.log(password)
-    const token = loginUser({
-      username,
-      password
-    });
-    console.log(token)
-    this.props.setToken(token)
+    Api.post("users/token", {
+      username: this.state.username,
+      password: this.state.password,
+    },
+    {
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }
+    })
+    .then(res => {
+      console.log(res)
+      const acces_token = res.data.access_token;
+      this.props.setToken(acces_token);
+      localStorage.setItem('token', acces_token)
+    })
+    .catch(error => console.log(error));
   }
 
   render() {

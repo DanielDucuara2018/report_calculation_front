@@ -16,7 +16,14 @@ class Purchase extends Component {
   }
 
   componentDidMount() {
-    Api.get("purchases/?user_id=user_1ff801bf1d12d35c549771a549f356bfa71")
+    const loggedInUserToken = localStorage.getItem("token");
+    Api.get("purchases",
+      {
+        headers: {
+          "Authorization": "Bearer " + loggedInUserToken
+        }
+      }
+    )
     .then(res => {
       const purchases = res.data;
       this.setState({ purchases });
@@ -28,7 +35,7 @@ class Purchase extends Component {
   }
 
   render() {
-    const purchases = this.state.purchases.sort((a, b) => Moment(a.date.replace("\[UTC\]","")) - Moment(b.date.replace("\[UTC\]",""))).reverse()
+    const purchases = this.state.purchases.sort((a, b) => Moment(a.date.replace("[UTC]","")) - Moment(b.date.replace("[UTC]",""))).reverse()
     return (
       <>
         <div className="main-container">

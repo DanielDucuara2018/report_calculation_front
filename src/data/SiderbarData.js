@@ -1,7 +1,4 @@
-import 
-{BsGrid1X2Fill, BsFillArchiveFill, BsFillGrid3X3GapFill, BsPeopleFill, 
-  BsListCheck, BsMenuButtonWideFill, BsFillGearFill}
- from "react-icons/bs"
+import {BsGrid1X2Fill, BsFillArchiveFill} from "react-icons/bs"
 
 export const sidebarData = [
   {
