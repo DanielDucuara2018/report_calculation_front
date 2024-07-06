@@ -15,6 +15,12 @@ class Purchase extends Component {
     this.refreshPage = this.refreshPage.bind(this)
   }
 
+  handleLogout(){
+    console.log("logout")
+    localStorage.clear();
+    window.location.reload(false);
+  };
+
   componentDidMount() {
     const loggedInUserToken = localStorage.getItem("token");
     Api.get("purchases",
@@ -23,11 +29,16 @@ class Purchase extends Component {
           "Authorization": "Bearer " + loggedInUserToken
         }
       }
-    )
-    .then(res => {
+    ).then(res => {
       const purchases = res.data;
       this.setState({ purchases });
-    })
+    }).catch(function (error) {
+      console.log(error.response.status);
+      if(error.response.status === 401){
+        console.log("logout")
+        localStorage.clear();
+        window.location.reload(false);      }
+    });
   }
 
   refreshPage() {

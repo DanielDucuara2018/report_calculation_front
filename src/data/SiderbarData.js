@@ -37,4 +37,9 @@ export const sidebarData = [
   //   heading: "Settings",
   //   route: "/settings"
   // },
+  // {
+  //   icon: TbLogout2,
+  //   heading: "Logout",
+  //   route: "/login"
+  // },
 ];

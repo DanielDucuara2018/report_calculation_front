@@ -6,7 +6,10 @@ services:
       context: ./
       dockerfile: ./Dockerfile.prod
     networks:
-      - report_calculation_report_bridge
+      report_calculation_report_bridge:
+        ipv4_address: 169.254.6.5
+        aliases:
+          - "report-dashboard.portafolio"
     ports:
       - 3200:80  
     volumes:
@@ -17,7 +20,10 @@ services:
       context: ./
       dockerfile: ./Dockerfile.dev
     networks:
-      - report_calculation_report_bridge
+      report_calculation_report_bridge:
+        ipv4_address: 169.254.6.6
+        aliases:
+          - "report-dashboard-dev.portafolio"
     ports:
       - 3200:3200  
     volumes:

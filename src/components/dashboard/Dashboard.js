@@ -34,18 +34,30 @@ class Dashboard extends Component {
       axios.spread(({ data: total_euros }, { data: total_crypto_euros }, { data: profit_euros }, { data: invested_euros }) => {
         this.setState({ total: [total_euros, total_crypto_euros, profit_euros, invested_euros] })
       })
-    );
+    ).catch(function (error) {
+      console.log(error.response.status);
+      if(error.response.status === 401){
+        console.log("logout")
+        localStorage.clear();
+        window.location.reload(false);      }
+    });
+
     Api.get("currencies",
       {
         headers: {
           "Authorization": "Bearer " + loggedInUserToken
         }
       }
-    )
-    .then(res => {
+    ).then(res => {
       const currencies = res.data;
       this.setState({ currencies });
-    })
+    }).catch(function (error) {
+      console.log(error.response.status);
+      if(error.response.status === 401){
+        console.log("logout")
+        localStorage.clear();
+        window.location.reload(false);      }    
+    });
   }
 
   refreshPage() {
