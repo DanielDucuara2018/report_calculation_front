@@ -14,6 +14,7 @@ services:
       - 3200:80  
     volumes:
       - ./:/app/
+      - /app/node_modules
   
   app_dev:
     build:
@@ -28,6 +29,7 @@ services:
       - 3200:3200  
     volumes:
       - ./:/app/
+      - /app/node_modules
 
 networks:
   report_calculation_report_bridge:

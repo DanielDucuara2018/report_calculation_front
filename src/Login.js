@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import { withCookies, Cookies } from 'react-cookie'
 import PropTypes from 'prop-types';
 import Api from "./Api";
 import './Login.css';
