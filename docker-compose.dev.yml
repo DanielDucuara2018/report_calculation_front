@@ -1,28 +1,14 @@
+
 version: "3.7"
 
-services:
-  app:
-    build:
-      context: ./
-      dockerfile: ./Dockerfile.prod
-    networks:
-      report_calculation_report_bridge:
-        ipv4_address: 169.254.6.5
-        aliases:
-          - "report-dashboard.portafolio"
-    ports:
-      - 3200:80  
-    volumes:
-      - ./:/app/
-      - /app/node_modules
-  
+services:  
   app_dev:
     build:
       context: ./
       dockerfile: ./Dockerfile.dev
     networks:
       report_calculation_report_bridge:
-        ipv4_address: 169.254.6.6
+        ipv4_address: 169.254.6.5
         aliases:
           - "report-dashboard-dev.portafolio"
     ports:
@@ -30,6 +16,20 @@ services:
     volumes:
       - ./:/app/
       - /app/node_modules
+
+  nginx:
+    image: nginx:latest
+    networks:
+      report_calculation_report_bridge:
+        ipv4_address: 169.254.6.6
+        aliases:
+          - "report-nginx.portafolio"
+    ports:
+      - 80:80
+    volumes:
+      - ./resources/nginx_dev.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - app_dev
 
 networks:
   report_calculation_report_bridge:

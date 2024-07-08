@@ -1,0 +1,21 @@
+version: "3.7"
+
+services:
+  app:
+    build:
+      context: ./
+      dockerfile: ./Dockerfile.prod
+    networks:
+      report_calculation_report_bridge:
+        ipv4_address: 169.254.6.5
+        aliases:
+          - "report-dashboard.portafolio"
+    ports:
+      - 3200:80  
+    volumes:
+      - ./:/app/
+      - /app/node_modules
+
+networks:
+  report_calculation_report_bridge:
+    external: true
