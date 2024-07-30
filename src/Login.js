@@ -42,21 +42,23 @@ class Login extends Component {
     console.log(isloggingin)
     return(
       <div className="login-wrapper">
-        <h1>Welcome to report calculation</h1>
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            <p>Username</p>
-            <input type="text" onChange={e => this.setState({username: e.target.value})} />
-          </label>
-          <label>
-            <p>Password</p>
-            <input type="password" onChange={e => this.setState({password: e.target.value})} />
-          </label>
-          <div>
-            <button type="submit" disabled={ isloggingin }>sign in</button>
-          </div>
-        </form>
-        {error && <p className="error">{error}</p>}
+        <div className="login-form">
+          <h1>Welcome to report calculation</h1>
+          <form onSubmit={this.handleSubmit}>
+            <label>
+              <p>Username</p>
+              <input type="text" onChange={e => this.setState({username: e.target.value})} />
+            </label>
+            <label>
+              <p>Password</p>
+              <input type="password" onChange={e => this.setState({password: e.target.value})} />
+            </label>
+            <div>
+              <button type="submit" disabled={ isloggingin }>sign in</button>
+            </div>
+          </form>
+          {error && <p className="error">{error}</p>}
+        </div>
       </div>
     );
   }

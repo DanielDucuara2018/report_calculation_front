@@ -15,7 +15,52 @@
   font-family: "Inter", sans-serif;
 }
 
-.error {
+.login-form {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 300px;
+}
+
+.login-form h1 {
+  margin-bottom: 20px;
+}
+
+.login-form label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.login-form input {
+  width: 80%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.login-form button {
+  width: 25%;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.login-form button:disabled {
+  background-color: #ccc;
+}
+
+.login-form .error {
+  color: red;
+  margin-top: 10px;
+}
+
+/* .error {
   color: red;
 }
 
@@ -46,5 +91,5 @@
 .login-wrapper button:disabled {
   background-color: #ccc;
   cursor: not-allowed;
-}
+} */
 
