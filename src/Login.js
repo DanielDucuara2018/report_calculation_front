@@ -42,7 +42,7 @@ class Login extends Component {
     console.log(isloggingin)
     return(
       <div className="login-wrapper">
-        <h1>Please Log In</h1>
+        <h1>Welcome to report calculation</h1>
         <form onSubmit={this.handleSubmit}>
           <label>
             <p>Username</p>
@@ -53,7 +53,7 @@ class Login extends Component {
             <input type="password" onChange={e => this.setState({password: e.target.value})} />
           </label>
           <div>
-            <button type="submit" disabled={ isloggingin }>Submit</button>
+            <button type="submit" disabled={ isloggingin }>sign in</button>
           </div>
         </form>
         {error && <p className="error">{error}</p>}
