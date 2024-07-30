@@ -6,12 +6,13 @@ import './Login.css';
 class Login extends Component {
   constructor(props) {
     super(props);
-    this.state = {username: "", password: ""}
+    this.state = {username: "", password: "", error: null, isloggingin: false}
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   handleSubmit(e){
     e.preventDefault();
+    this.setState({ isloggingin: true });
     Api.post("users/token", {
       username: this.state.username,
       password: this.state.password,
@@ -26,11 +27,19 @@ class Login extends Component {
       const acces_token = res.data.access_token;
       this.props.setToken(acces_token);
       localStorage.setItem('token', acces_token)
+      this.setState({ isloggingin: false });
     })
-    .catch(error => console.log(error));
+    .catch((error) => {
+      this.setState({
+        error: "Invalid username or password",
+        isloggingin: false,
+      });
+    });
   }
 
   render() {
+    const { error, isloggingin } = this.state;
+    console.log(isloggingin)
     return(
       <div className="login-wrapper">
         <h1>Please Log In</h1>
@@ -44,9 +53,10 @@ class Login extends Component {
             <input type="password" onChange={e => this.setState({password: e.target.value})} />
           </label>
           <div>
-            <button type="submit">Submit</button>
+            <button type="submit" disabled={ isloggingin }>Submit</button>
           </div>
         </form>
+        {error && <p className="error">{error}</p>}
       </div>
     );
   }

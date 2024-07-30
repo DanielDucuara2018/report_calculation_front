@@ -11,7 +11,7 @@ import "./Purchase.css"
 class Purchase extends Component {
   constructor(props) {
     super(props);
-    this.state = {purchases: []}
+    this.state = {purchases: [], refreshingPage: false}
     this.refreshPage = this.refreshPage.bind(this)
   }
 
@@ -22,6 +22,7 @@ class Purchase extends Component {
   };
 
   componentDidMount() {
+    this.setState({ refreshingPage: true });
     const loggedInUserToken = localStorage.getItem("token");
     Api.get("purchases",
       {
@@ -30,14 +31,15 @@ class Purchase extends Component {
         }
       }
     ).then(res => {
-      const purchases = res.data;
-      this.setState({ purchases });
+      this.setState({ purchases: res.data, refreshingPage: false });
     }).catch(function (error) {
       console.log(error.response.status);
       if(error.response.status === 401){
         console.log("logout")
         localStorage.clear();
-        window.location.reload(false);      }
+        window.location.reload(false);      
+      }
+      this.setState({ refreshingPage: false });
     });
   }
 
@@ -46,24 +48,26 @@ class Purchase extends Component {
   }
 
   render() {
-    const purchases = this.state.purchases.sort((a, b) => Moment(a.date.replace("[UTC]","")) - Moment(b.date.replace("[UTC]",""))).reverse()
+    const { purchases, refreshingPage } = this.state
+    const sortedPurchases = purchases.sort((a, b) => Moment(a.date.replace("[UTC]","")) - Moment(b.date.replace("[UTC]",""))).reverse()
+    console.log(refreshingPage)
     return (
       <>
         <div className="main-container">
-          <div className="main-title"> Purchases <span><FiRefreshCw onClick={this.refreshPage}/></span></div>
+          <div className="main-title"> Purchases <span className={refreshingPage ? 'span-disabled' : 'span-enabled'} ><FiRefreshCw onClick={this.refreshPage}/></span></div>
           <div className="charts-container">
             <div className="chart-item">
-              <BarChart purchases={purchases}/>
+              <BarChart purchases={sortedPurchases}/>
             </div>
             <div className="chart-item">
-              <LineChart purchases={purchases}/>
+              <LineChart purchases={sortedPurchases}/>
             </div>
           </div>
           <div className="table-container">
-            <DefaultTable purchases={purchases}/>
+            <DefaultTable purchases={sortedPurchases}/>
           </div>
         </div>
-        <Rightside purchases={purchases}></Rightside>
+        <Rightside purchases={sortedPurchases}></Rightside>
       </>
     );
   }

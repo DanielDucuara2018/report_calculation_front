@@ -18,11 +18,12 @@ const endpoints = [
 class Dashboard extends Component {
   constructor(props) {
     super(props);
-    this.state = {total: Array(4).fill(0), currencies: []}
+    this.state = {total: Array(4).fill(0), currencies: [], refreshingPage: false}
     this.refreshPage = this.refreshPage.bind(this)
   }
 
   componentDidMount() {
+    this.setState({ refreshingPage: true });
     const loggedInUserToken = localStorage.getItem("token");
     axios.all(endpoints.map((endpoint) => Api.get(`calculate/${endpoint}`,
       {
@@ -39,7 +40,9 @@ class Dashboard extends Component {
       if(error.response.status === 401){
         console.log("logout")
         localStorage.clear();
-        window.location.reload(false);      }
+        window.location.reload(false);      
+      }
+      this.setState({ refreshingPage: false });
     });
 
     Api.get("currencies",
@@ -49,15 +52,18 @@ class Dashboard extends Component {
         }
       }
     ).then(res => {
-      const currencies = res.data;
-      this.setState({ currencies });
+      this.setState({ currencies: res.data, refreshingPage: false });
     }).catch(function (error) {
       console.log(error.response.status);
       if(error.response.status === 401){
         console.log("logout")
         localStorage.clear();
-        window.location.reload(false);      }    
+        window.location.reload(false);      
+      }
+      this.setState({ refreshingPage: false });
     });
+
+    
   }
 
   refreshPage() {
@@ -65,11 +71,12 @@ class Dashboard extends Component {
   }
 
   render() {
-    const total = this.state.total
+    const {total, refreshingPage} = this.state
+    console.log(refreshingPage)
     return (
       <>
         <div className="main-container">
-          <div className="main-title"> DashBoard <span><FiRefreshCw onClick={this.refreshPage}/></span></div>
+          <div className="main-title"> DashBoard <span className={refreshingPage ? 'span-disabled' : 'span-enabled'}><FiRefreshCw onClick={this.refreshPage} /></span></div>
           <div className="cards-container">
             {cardsData.map((item, index) => {
               return (
