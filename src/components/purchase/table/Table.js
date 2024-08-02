@@ -7,11 +7,11 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Moment from "moment";
-import "./Table.css"
+import "./Table.css";
 
 class DefaultTable extends Component {
   render() {
-    const dateTimeFormat = "MMMM Do YYYY, h:mm:ss a"
+    const dateTimeFormat = "MMMM Do YYYY, h:mm:ss a";
     const purchases = this.props.purchases;
     return (
       <div className="Table">
@@ -42,13 +42,23 @@ class DefaultTable extends Component {
                   <TableCell component="th" scope="row">
                     {purchase.symbol}
                   </TableCell>
-                  <TableCell align="left">{purchase.quantity.toFixed(4)}</TableCell>
+                  <TableCell align="left">
+                    {purchase.quantity.toFixed(4)}
+                  </TableCell>
                   <TableCell align="left">{purchase.price}</TableCell>
                   <TableCell align="left">{purchase.gain.toFixed(2)}</TableCell>
                   <TableCell align="left">{purchase.description}</TableCell>
-                  <TableCell align="left">{Moment(purchase.date).format(dateTimeFormat)}</TableCell>
-                  <TableCell align="left">{Moment(purchase.creation_date).format(dateTimeFormat)}</TableCell>
-                  <TableCell align="left">{purchase.update_date? Moment(purchase.update_date).format(dateTimeFormat):purchase.update_date}</TableCell>
+                  <TableCell align="left">
+                    {Moment(purchase.date).format(dateTimeFormat)}
+                  </TableCell>
+                  <TableCell align="left">
+                    {Moment(purchase.creation_date).format(dateTimeFormat)}
+                  </TableCell>
+                  <TableCell align="left">
+                    {purchase.update_date
+                      ? Moment(purchase.update_date).format(dateTimeFormat)
+                      : purchase.update_date}
+                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>

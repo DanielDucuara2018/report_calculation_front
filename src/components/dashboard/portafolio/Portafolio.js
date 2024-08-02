@@ -6,14 +6,13 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import Moment from 'moment';
-import "./Portafolio.css"
-
+import Moment from "moment";
+import "./Portafolio.css";
 
 class Portafolio extends Component {
   render() {
-    const dateTimeFormat = "MMMM Do YYYY, h:mm:ss a"
-    const currencies = this.props.currencies
+    const dateTimeFormat = "MMMM Do YYYY, h:mm:ss a";
+    const currencies = this.props.currencies;
 
     return (
       <div className="Table">
@@ -41,10 +40,18 @@ class Portafolio extends Component {
                   <TableCell component="th" scope="row">
                     {currency.symbol}
                   </TableCell>
-                  <TableCell align="left">{currency.quantity.toFixed(4)}</TableCell>
+                  <TableCell align="left">
+                    {currency.quantity.toFixed(4)}
+                  </TableCell>
                   <TableCell align="left">{currency.description}</TableCell>
-                  <TableCell align="left">{Moment(currency.creation_date).format(dateTimeFormat)}</TableCell>
-                  <TableCell align="left">{currency.update_date? Moment(currency.update_date).format(dateTimeFormat):currency.update_date}</TableCell>
+                  <TableCell align="left">
+                    {Moment(currency.creation_date).format(dateTimeFormat)}
+                  </TableCell>
+                  <TableCell align="left">
+                    {currency.update_date
+                      ? Moment(currency.update_date).format(dateTimeFormat)
+                      : currency.update_date}
+                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>

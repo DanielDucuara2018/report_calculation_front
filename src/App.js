@@ -1,60 +1,52 @@
 import React from "react";
-import Dashboard from "./components/dashboard/Dashboard"
-import Sidebar from "./components/sidebar/Sidebar"
-import Purchase from "./components/purchase/Purchase";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Dashboard from "./components/dashboard/Dashboard";
+import Sidebar from "./components/sidebar/Sidebar";
+import Purchase from "./components/purchase/Purchase";
+import { connect } from "react-redux";
+import { clearState } from "./actions/appActions";
 import Login from "./Login";
-import "./App.css"
-
+import "./App.css";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element:       
-    <div className="app-container">
-      <div className="grid-container">
-        <Sidebar/>
-        <Dashboard/>
+    element: (
+      <div className="app-container">
+        <div className="grid-container">
+          <Sidebar />
+          <Dashboard />
+        </div>
       </div>
-    </div>,
+    ),
   },
   {
     path: "/purchases",
-    element:     
-    <div className="app-container">
-      <div className="grid-container">
-        <Sidebar/>
-        <Purchase/>
+    element: (
+      <div className="app-container">
+        <div className="grid-container">
+          <Sidebar />
+          <Purchase />
+        </div>
       </div>
-    </div>,
+    ),
   },
 ]);
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {token: "", user: {}}
-    this.setToken = this.setToken.bind(this)
-  }
-
-  setToken(token){
-    this.setState({token})
-  }
-
-  componentDidMount() {
-    const loggedInUserToken = localStorage.getItem("token");
-    if (loggedInUserToken) {
-      this.setToken(loggedInUserToken);
-    }
-  } // From a security point of view, storing the access token in a persistent location (like localStorage, window,..) is bad practice 
-  
   render() {
     return (
-      <>
-      {this.state.token? <RouterProvider router={router} />:<Login setToken={this.setToken} />}
-     </>
+      <>{this.props.token ? <RouterProvider router={router} /> : <Login />}</>
     );
   }
 }
 
-export default App
+const mapStateToProps = (state) => ({
+  token: state.appRootReducer.token,
+});
+
+const mapDispatchToProps = {
+  clearState,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
