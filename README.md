@@ -1,15 +1,15 @@
 # 📊 Report Calculation Front-End
 
-The **Report Calculation Front-End** is a responsive web application designed to visualize and manage financial reports. Built with modern JavaScript frameworks, it provides users with an intuitive interface to interact with complex data sets, offering real-time insights and streamlined report generation.:contentReference[oaicite:6]{index=6}
+The **Report Calculation Front-End** is a responsive web application designed to visualize and manage financial reports. Built using modern JavaScript technologies, it offers users an intuitive interface to explore complex data, generate reports, and gain actionable insights with ease.
 
 ---
 
 ## 🚀 Features
 
-- **Interactive Dashboard**: :contentReference[oaicite:8]{index=8}
-- **Purchases Overview**: :contentReference[oaicite:11]{index=11}
-- **Responsive Design**: :contentReference[oaicite:14]{index=14}
-- **Modular Architecture**: :contentReference[oaicite:17]{index=17}:contentReference[oaicite:19]{index=19}
+- **Interactive Dashboard**: Real-time visualization of key financial metrics and data trends.
+- **Purchases Overview**: Detailed view and analysis of purchase records and behavior.
+- **Responsive Design**: Optimized for performance across desktops, tablets, and mobile devices.
+- **Modular Architecture**: Designed with reusability and scalability in mind for easy maintenance and extension.
 
 ---
 
@@ -17,20 +17,20 @@ The **Report Calculation Front-End** is a responsive web application designed to
 
 ### Dashboard Page
 
-![Dashboard Page](resources/dashboard.png)
+![Dashboard Page](./resources/dashboard.png)
 
 ### Purchases Page
 
-![Purchases Page](resources/purchases.png)
+![Purchases Page](./resources/purchases.png)
 
 ---
 
 ## 🛠️ Technologies Used
 
-- **Frontend**: :contentReference[oaicite:21]{index=21}
-- **Build Tools**: :contentReference[oaicite:24]{index=24}
+- **Frontend**: JavaScript, HTML5, CSS3
+- **Build Tools**: Webpack, Babel
 - **Package Management**: npm
-- **Containerization**: :contentReference[oaicite:29]{index=29}:contentReference[oaicite:31]{index=31}
+- **Containerization**: Docker, Docker Compose
 
 ---
 
@@ -38,8 +38,8 @@ The **Report Calculation Front-End** is a responsive web application designed to
 
 ### Prerequisites
 
-- :contentReference[oaicite:33]{index=33}
-- :contentReference[oaicite:36]{index=36}:contentReference[oaicite:38]{index=38}
+- Node.js (v14 or later)
+- Docker & Docker Compose (for production deployment)
 
 ### Installation
 
@@ -91,7 +91,7 @@ report_calculation_front/
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please fork the repository and submit a pull request for any enhancements or bug fixes.
+Contributions are welcome! Feel free to fork the repository and submit a pull request with your improvements, bug fixes, or new features.
 
 ---
 
