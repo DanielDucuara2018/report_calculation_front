@@ -17,11 +17,11 @@ The **Report Calculation Front-End** is a responsive web application designed to
 
 ### Dashboard Page
 
-![Dashboard Page](./resources/dashboard.png)
+![Dashboard Page](./resources/Dashboard.png)
 
 ### Purchases Page
 
-![Purchases Page](./resources/purchases.png)
+![Purchases Page](./resources/Purchases.png)
 
 ---
 
